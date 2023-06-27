@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Drawing tool</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Pixel Art Drawer</h1>
+    </header>
+    <main>
+        <div class="tools">
+            <label for="colorpicker">Color Picker</label>
+            <input type="color" id="colorpicker" value="#0000ff">
+            <button>Color Mode</button>
+            <button>Rainbow Mode</button>
+            <button>Eraser</button>
+            <button>Clear</button>  
+            <div class="slidecontainer">
+            <input type="range" min="1" max="100" value="50" class="slider">
+            <p id="sliderOutput">Size: 16x16</p>   
+           </div>
+        </div>
+        <div class="canvas"></div>
+    </main>
+    <footer>Crafted by Dmendez44</footer>
+</body>
+</html>

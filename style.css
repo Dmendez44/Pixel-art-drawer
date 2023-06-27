@@ -1,0 +1,47 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 45px;
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+    justify-content: center;
+    gap: 30px;
+}
+
+label {
+    align-self: center;
+}
+
+#colorpicker {
+    align-self: center;
+}
+
+#sliderOutput {
+    text-align: center;
+}
+.canvas {
+    height: 600px;
+    width: 600px;
+    border: 2px solid black;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+}
