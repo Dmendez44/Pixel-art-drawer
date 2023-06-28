@@ -19,11 +19,28 @@ eraser.addEventListener('click', () => {
     if (eraserMode % 2 === 0) {
         eraserMode = true;
         toggleEraser++;
+        eraser.style.backgroundColor = 'green';
     } else {
+        eraser.style.backgroundColor = 'red';
         eraserMode = false;
         toggleEraser++;
     }
 
+});
+
+let toggleRandMode = 1;
+const randomColor = document.querySelector('#randomMode')
+randMode = false;
+randomColor.addEventListener('click', () => {
+    if (randMode % 2 === 0) {
+        randMode = true;
+        toggleRandMode++;
+        randomColor.style.backgroundColor = 'green';
+    } else {
+        randomColor.style.backgroundColor = 'red';
+        randMode = false;
+        toggleRandMode++;
+    }
 });
 
 
@@ -42,6 +59,7 @@ function createCanvas () {
         pixel.setAttribute('draggable', false);
         pixel.classList.add('pixel');
         pixel.classList.add('eraserMode');
+        pixel.classList.add('randomMode');
         pixel.style.height = `${600 / pixelAmount}px`;
         pixel.style.width = `${600 / pixelAmount}px`;
         canvas.appendChild(pixel);
@@ -63,8 +81,11 @@ function startDrawing(e) {
     if (isDrawing && e.buttons === 1 && e.target.classList.contains('eraserMode') && eraserMode) {
         e.target.style.backgroundColor = 'transparent';
         // removeProperty("backgroundColor")
-    }
-    else if (e.target.classList.contains('pixel')) {
+    } else if (isDrawing && e.buttons === 1 && e.target.classList.contains('randomMode') && randMode) {
+        randomNum = Math. floor(Math. random() * 256)
+        let randomColor = `rgb(${randomNumber()}, ${randomNumber}, ${randomNumber})`
+        e.target.style.backgroundColor = 'red';
+    } else if (e.target.classList.contains('pixel')) {
         e.target.style.backgroundColor = colorPicker.style.color;
     }
 }
@@ -72,6 +93,10 @@ function startDrawing(e) {
 function drawPixel(e) {
     if (isDrawing && e.buttons === 1 && e.target.classList.contains('eraserMode') && eraserMode) {
         e.target.style.backgroundColor = 'transparent';
+    } else if (isDrawing && e.buttons === 1 && e.target.classList.contains('randomMode') && randMode) {
+        randomNum = Math. floor(Math. random() * 256)
+        let randomColor = `rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()})`
+        e.target.style.backgroundColor = randomColor;
     } else if (isDrawing && e.buttons === 1 && e.target.classList.contains('pixel')) {
         e.target.style.backgroundColor = colorPicker.style.color;
     } 
@@ -88,6 +113,11 @@ function removePixels () {
         canvas.removeChild(canvas.firstChild)
     }
 
+}
+
+function randomNumber() {
+    let randomNum = Math. floor(Math. random() * 256);
+    return randomNum;
 }
 document.addEventListener('dragstart', disableDragging);
 

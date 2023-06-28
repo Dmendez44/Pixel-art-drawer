@@ -35,6 +35,14 @@ label {
 #sliderOutput {
     text-align: center;
 }
+
+#eraser {
+    background-color: red;
+}
+
+#randomMode {
+    background-color: red;
+}
 .canvas {
     height: 600px;
     width: 600px;
