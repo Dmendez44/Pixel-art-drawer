@@ -48,6 +48,10 @@ label {
     box-shadow: 0px 0px 1px gray;
 }
 
+.pixel:hover {
+    background: #ccc7c7;
+}
+
 footer {
     display: flex;
     justify-content: center;
