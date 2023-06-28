@@ -29,6 +29,7 @@ label {
 
 #colorpicker {
     align-self: center;
+    color: #000;
 }
 
 #sliderOutput {
