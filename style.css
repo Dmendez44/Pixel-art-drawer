@@ -35,14 +35,14 @@ label {
 #sliderOutput {
     text-align: center;
 }
-
+/* 
 #eraser {
     background-color: red;
-}
-
+} */
+/* 
 #randomMode {
     background-color: red;
-}
+} */
 .canvas {
     height: 600px;
     width: 600px;
@@ -59,6 +59,10 @@ label {
 
 .pixel:hover {
     background: #ccc7c7;
+}
+
+.active {
+    background-color: rgb(43, 152, 202);
 }
 
 footer {

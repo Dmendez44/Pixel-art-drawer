@@ -13,35 +13,44 @@ colorPicker.addEventListener("change", updateSecond);
 
 let toggleEraser = 1;
 const eraser = document.querySelector('#eraser')
+
 eraserMode = false;
-
 eraser.addEventListener('click', () => {
-    if (eraserMode % 2 === 0) {
-        eraserMode = true;
-        toggleEraser++;
-        eraser.style.backgroundColor = 'green';
-    } else {
-        eraser.style.backgroundColor = 'red';
-        eraserMode = false;
-        toggleEraser++;
+    if (eraser.classList.contains('active')) {
+        return;
     }
-
+    colorMode.classList.remove("active")
+    randomColor.classList.remove("active")
+    eraser.classList.toggle("active")
+    if (eraser.classList.contains('active')) {
+        eraserMode = true;
+    }
 });
 
-let toggleRandMode = 1;
 const randomColor = document.querySelector('#randomMode')
 randMode = false;
 randomColor.addEventListener('click', () => {
-    if (randMode % 2 === 0) {
+    if (randomColor.classList.contains('active')) {
+        return;
+    }
+    colorMode.classList.remove("active")
+    eraser.classList.remove("active")
+    randomColor.classList.toggle("active")
+    if (randomColor.classList.contains('active')) {
         randMode = true;
-        toggleRandMode++;
-        randomColor.style.backgroundColor = 'green';
-    } else {
-        randomColor.style.backgroundColor = 'red';
-        randMode = false;
-        toggleRandMode++;
     }
 });
+
+const colorMode = document.querySelector('#colorMode');
+colorMode.classList.add('active')
+colorMode.addEventListener('click', () => {
+    if (colorMode.classList.contains('active')) {
+        return;
+    }
+    eraser.classList.remove("active")
+    randomColor.classList.remove("active")
+    colorMode.classList.toggle("active");
+})
 
 
 function updateFirst(event) {
@@ -78,22 +87,22 @@ function disableDragging(e) {
 
 function startDrawing(e) {
     isDrawing = true;
-    if (isDrawing && e.buttons === 1 && e.target.classList.contains('eraserMode') && eraserMode) {
+    if (isDrawing && e.buttons === 1 && e.target.classList.contains('eraserMode') && eraserMode && eraser.classList.contains('active')) {
         e.target.style.backgroundColor = 'transparent';
         // removeProperty("backgroundColor")
-    } else if (isDrawing && e.buttons === 1 && e.target.classList.contains('randomMode') && randMode) {
+    } else if (isDrawing && e.buttons === 1 && e.target.classList.contains('randomMode') && randomColor.classList.contains('active')) {
         randomNum = Math. floor(Math. random() * 256)
         let randomColor = `rgb(${randomNumber()}, ${randomNumber}, ${randomNumber})`
-        e.target.style.backgroundColor = 'red';
+        e.target.style.backgroundColor = randomColor;
     } else if (e.target.classList.contains('pixel')) {
         e.target.style.backgroundColor = colorPicker.style.color;
     }
 }
 
 function drawPixel(e) {
-    if (isDrawing && e.buttons === 1 && e.target.classList.contains('eraserMode') && eraserMode) {
+    if (isDrawing && e.buttons === 1 && e.target.classList.contains('eraserMode') && eraserMode && eraser.classList.contains('active')) {
         e.target.style.backgroundColor = 'transparent';
-    } else if (isDrawing && e.buttons === 1 && e.target.classList.contains('randomMode') && randMode) {
+    } else if (isDrawing && e.buttons === 1 && e.target.classList.contains('randomMode') && randMode && randomColor.classList.contains('active')) {
         randomNum = Math. floor(Math. random() * 256)
         let randomColor = `rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()})`
         e.target.style.backgroundColor = randomColor;
@@ -108,10 +117,11 @@ function stopDrawing() {
 
 
 function removePixels () {
-    let pixels = document.querySelectorAll('.pixel')
-    while (canvas.hasChildNodes()) {
-        canvas.removeChild(canvas.firstChild)
-    }
+    // let pixels = document.querySelectorAll('.pixel')
+    // while (canvas.hasChildNodes()) {
+    //     canvas.removeChild(canvas.firstChild)
+    // }
+    canvas.innerHTML = '';
 
 }
 
