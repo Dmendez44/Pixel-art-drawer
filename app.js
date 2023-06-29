@@ -11,7 +11,6 @@ colorPicker = document.querySelector("#colorpicker");
 colorPicker.addEventListener("input", updateFirst);
 colorPicker.addEventListener("change", updateSecond);
 
-let toggleEraser = 1;
 const eraser = document.querySelector('#eraser')
 
 eraserMode = false;
