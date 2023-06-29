@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Art Drawing tool</title>
+    <title>Pixel Art Drawing Tool</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="images/x-icon" href="./potion.png">
     <script src="app.js" defer></script>
 </head>
 <body>
@@ -15,10 +16,10 @@
         <div class="tools">
             <label for="colorpicker">Color Picker</label>
             <input type="color" id="colorpicker" value="#000000" style="color: rgb(0,0,0)" class="grow-on-hover">
-            <button id="colorMode" class="grow-on-hover">Color Mode</button>
-            <button id="randomMode" class="grow-on-hover">Random Mode</button>
-            <button id="eraser" class="grow-on-hover">Eraser</button>
-            <button id="clear" class="grow-on-hover">Clear</button>  
+            <button id="colorMode" class="grow-on-hover button-47" role="button">Color Mode</button>
+            <button id="randomMode" class="grow-on-hover button-47" role="button">Random Mode</button>
+            <button id="eraser" class="grow-on-hover button-47" role="button">Eraser</button>
+            <button id="clear" class="grow-on-hover button-47" role="button">Clear</button>  
             <div class="slidecontainer">
             <input type="range" min="1" max="64" value="16" class="slider">
             <p id="sliderOutput">Size: 16x16</p>   
@@ -26,6 +27,6 @@
         </div>
         <div class="canvas"></div>
     </main>
-    <footer>Crafted by Dmendez44</footer>
+    <footer><a href="https://github.com/Dmendez44">Crafted by Dmendez44</a></footer>
 </body>
 </html>
